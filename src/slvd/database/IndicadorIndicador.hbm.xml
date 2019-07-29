@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28-abr-2015 21:40:35 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="slvd.database.IndicadorIndicador" table="indicador_indicador" schema="public">
+        <id name="idIndicadorIndicador" type="int">
+            <column name="id_indicador_indicador" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="indicadorByIdIndicadorEntrada" class="slvd.database.Indicador" fetch="select">
+            <column name="id_indicador_entrada" not-null="true" />
+        </many-to-one>
+        <many-to-one name="indicadorByIdIndicadorSalida" class="slvd.database.Indicador" fetch="select">
+            <column name="id_indicador_salida" not-null="true" />
+        </many-to-one>
+        <set name="matrizAdyacenciaAsociadas" table="matriz_adyacencia_asociada" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_indicador_indicador" not-null="true" />
+            </key>
+            <one-to-many class="slvd.database.MatrizAdyacenciaAsociada" />
+        </set>
+        <set name="matrizAdyacencias" table="matriz_adyacencia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_indicador_indicador" not-null="true" />
+            </key>
+            <one-to-many class="slvd.database.MatrizAdyacencia" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28-abr-2015 21:40:35 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="slvd.database.Pregunta" table="pregunta" schema="public">
+        <id name="idPregunta" type="int">
+            <column name="id_pregunta" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="asignatura" class="slvd.database.Asignatura" fetch="select">
+            <column name="id_asignatura" />
+        </many-to-one>
+        <property name="pregunta" type="string">
+            <column name="pregunta" />
+        </property>
+        <property name="tipoPregunta" type="string">
+            <column name="tipo_pregunta" length="50" />
+        </property>
+        <property name="imagenFile" type="string">
+            <column name="imagen_file"/>
+        </property>
+        <set name="respuestas" table="respuesta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_pregunta" not-null="true" />
+            </key>
+            <one-to-many class="slvd.database.Respuesta" />
+        </set>
+    </class>
+</hibernate-mapping>

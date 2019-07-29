@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28-abr-2015 21:40:35 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="slvd.database.VariableLenguistica" table="variable_lenguistica" schema="public">
+        <id name="idVariableLenguistica" type="int">
+            <column name="id_variable_lenguistica" />
+            <generator class="increment" />
+        </id>
+        <property name="valorNumerico" type="java.lang.Float">
+            <column name="valor_numerico" precision="8" scale="8" />
+        </property>
+        <property name="impacto" type="string">
+            <column name="impacto" />
+        </property>
+        <set name="matrizAdyacenciaAsociadas" table="matriz_adyacencia_asociada" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_variable_lenguistica" />
+            </key>
+            <one-to-many class="slvd.database.MatrizAdyacenciaAsociada" />
+        </set>
+    </class>
+</hibernate-mapping>

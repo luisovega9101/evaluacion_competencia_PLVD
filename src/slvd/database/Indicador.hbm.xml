@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28-abr-2015 21:40:35 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="slvd.database.Indicador" table="indicador" schema="public">
+        <id name="idIndicador" type="int">
+            <column name="id_indicador" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="asignatura" class="slvd.database.Asignatura" fetch="select">
+            <column name="id_asignatura" />
+        </many-to-one>
+        <property name="nomenclaturaIndicador" type="string">
+            <column name="nomenclatura_indicador" length="10" />
+        </property>
+        <property name="descripcionIndicador" type="string">
+            <column name="descripcion_indicador" />
+        </property>
+        <set name="indicadorIndicadorsForIdIndicadorEntrada" table="indicador_indicador" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_indicador_entrada" not-null="true" />
+            </key>
+            <one-to-many class="slvd.database.IndicadorIndicador" />
+        </set>
+        <set name="analisisEstaticos" table="analisis_estatico" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_indicador" not-null="true" />
+            </key>
+            <one-to-many class="slvd.database.AnalisisEstatico" />
+        </set>
+        <set name="indicadorIndicadorsForIdIndicadorSalida" table="indicador_indicador" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_indicador_salida" not-null="true" />
+            </key>
+            <one-to-many class="slvd.database.IndicadorIndicador" />
+        </set>
+    </class>
+</hibernate-mapping>

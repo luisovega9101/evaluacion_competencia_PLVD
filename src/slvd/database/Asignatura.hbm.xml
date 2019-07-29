@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28-abr-2015 21:40:35 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="slvd.database.Asignatura" table="asignatura" schema="public">
+        <id name="idAsignatura" type="int">
+            <column name="id_asignatura" />
+            <generator class="increment" />
+        </id>
+        <property name="nombreAsignatura" type="string">
+            <column name="nombre_asignatura" />
+        </property>
+        <set name="indicadors" table="indicador" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_asignatura" />
+            </key>
+            <one-to-many class="slvd.database.Indicador" />
+        </set>
+        <set name="preguntas" table="pregunta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_asignatura" />
+            </key>
+            <one-to-many class="slvd.database.Pregunta" />
+        </set>
+    </class>
+</hibernate-mapping>

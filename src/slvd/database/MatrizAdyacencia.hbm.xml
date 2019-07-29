@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28-abr-2015 21:40:35 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="slvd.database.MatrizAdyacencia" table="matriz_adyacencia" schema="public">
+        <id name="idMatriz" type="int">
+            <column name="id_matriz" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="indicadorIndicador" class="slvd.database.IndicadorIndicador" fetch="select">
+            <column name="id_indicador_indicador" not-null="true" />
+        </many-to-one>
+        <property name="valorAbsoluto" type="java.lang.Float">
+            <column name="valor_absoluto" precision="8" scale="8" />
+        </property>
+    </class>
+</hibernate-mapping>

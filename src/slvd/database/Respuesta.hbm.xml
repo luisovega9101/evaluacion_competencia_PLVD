@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28-abr-2015 21:40:35 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="slvd.database.Respuesta" table="respuesta" schema="public">
+        <id name="idRespuesta" type="int">
+            <column name="id_respuesta" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="pregunta" class="slvd.database.Pregunta" fetch="select">
+            <column name="id_pregunta" not-null="true" />
+        </many-to-one>
+        <property name="respuesta" type="string">
+            <column name="respuesta" />
+        </property>
+        <property name="peso" type="java.lang.Float">
+            <column name="peso" precision="8" scale="8" />
+        </property>
+        <set name="resultados" table="resultado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_respuesta" />
+            </key>
+            <one-to-many class="slvd.database.Resultado" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+<schema-selection match-catalog="diagnostico_competencia" match-schema="public"/>  
+  <table-filter match-name="matriz_adyacencia"/>
+  <table-filter match-name="usuario"/>
+  <table-filter match-name="respuesta"/>
+  <table-filter match-name="matriz_adyacencia_asociada"/>
+  <table-filter match-name="evaluacion"/>
+  <table-filter match-name="analisis_estatico"/>
+  <table-filter match-name="indicador"/>
+  <table-filter match-name="asignatura"/>
+  <table-filter match-name="variable_lenguistica"/>
+  <table-filter match-name="indicador_indicador"/>
+  <table-filter match-name="resultado"/>
+  <table-filter match-name="pregunta"/>
+  
+</hibernate-reverse-engineering>

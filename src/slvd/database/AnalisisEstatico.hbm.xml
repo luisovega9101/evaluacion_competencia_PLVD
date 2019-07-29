@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28-abr-2015 21:40:35 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="slvd.database.AnalisisEstatico" table="analisis_estatico" schema="public">
+        <id name="idAnalisis" type="int">
+            <column name="id_analisis" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="indicador" class="slvd.database.Indicador" fetch="select">
+            <column name="id_indicador" not-null="true" />
+        </many-to-one>
+        <property name="gradoSalida" type="java.lang.Float">
+            <column name="grado_salida" precision="8" scale="8" />
+        </property>
+        <property name="gradoEntrada" type="java.lang.Float">
+            <column name="grado_entrada" precision="8" scale="8" />
+        </property>
+        <property name="centralidad" type="java.lang.Float">
+            <column name="centralidad" precision="8" scale="8" />
+        </property>
+        <property name="centralidadNormalizada" type="java.lang.Float">
+            <column name="centralidad_normalizada" precision="8" scale="8" />
+        </property>
+        <property name="gradoEntradaNormalizado" type="java.lang.Float">
+            <column name="grado_entrada_normalizado" precision="8" scale="8" />
+        </property>
+        <property name="gradoSalidaNormalizado" type="java.lang.Float">
+            <column name="grado_salida_normalizado" precision="8" scale="8" />
+        </property>
+    </class>
+</hibernate-mapping>
